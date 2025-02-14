@@ -1,12 +1,18 @@
-import 'package:cook_book/components/name_title.dart';
+import 'package:cook_book/Domain/interfaces/i_recipe_service.dart';
+import 'package:cook_book/Ui/components/name_title.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatelessWidget {
-  const Home({super.key});
+  final IRecipeService service;
+
+  const Home({super.key, required this.service});
 
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
+
+    var cards = service.getAll();
+
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(120),
@@ -37,25 +43,21 @@ class Home extends StatelessWidget {
           ),
         ),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'Montserrat',
-              style: TextStyle(fontFamily: "Montserrat"),
-            ),
-            Text(
-              'Roboto',
-              style: TextStyle(fontFamily: "Roboto"),
-            ),
-            Text(
-              'Regular',
-              style: TextStyle(),
-            ),
-            ElevatedButton(onPressed: () {}, child: Text("data")),
-          ],
-        ),
+      body: ListView.builder(
+        itemCount: cards.length,
+        itemBuilder: (context, index) {
+          var item = cards[index];
+
+          return Row(
+            children: [
+              Text(item.name),
+              const SizedBox(
+                width: 10,
+              ),
+              Text(item.ccal.toString())
+            ],
+          );
+        },
       ),
     );
   }
