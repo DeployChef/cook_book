@@ -9,6 +9,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: any
+
+  flutter_svg: ^2.0.17
 
 dev_dependencies:
   flutter_test:
@@ -16,11 +21,13 @@ dev_dependencies:
   flutter_lints: ^4.0.0
 
 flutter:
+  generate: true
   uses-material-design: true
 
   assets:
     - assets/
     - assets/fonts/
+    - assets/icons/
 
   fonts:
     - family: Roboto
