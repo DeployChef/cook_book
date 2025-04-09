@@ -1,5 +1,9 @@
 import 'package:cook_book/Domain/interfaces/i_recipe_service.dart';
-import 'package:cook_book/Ui/components/name_title.dart';
+import 'package:cook_book/Ui/components/all_recipes.dart';
+import 'package:cook_book/Ui/components/filter.dart';
+import 'package:cook_book/Ui/components/main_app_bar.dart';
+import 'package:cook_book/Ui/components/recipe_card_vertical.dart';
+import 'package:cook_book/Ui/components/top_recipes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -15,53 +19,41 @@ class HomePage extends StatelessWidget {
 
     var cards = service.getAll();
 
-    return Column(
-      children: [
-        Container(
-          child: Padding(
-            padding: const EdgeInsets.only(right: 25.0, left: 25.0, top: 100),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const NameTitle("Chef"),
-                    Text(
-                      loc.titleQuestion,
-                      style: theme.textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.w300),
-                    ),
-                  ],
-                ),
-                Container(
-                  height: 47,
-                  width: 47,
-                  color: theme.primaryColor,
-                )
-              ],
+    return SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.all(25.0),
+        child: CustomScrollView(
+          slivers: [
+            SliverAppBar(
+              collapsedHeight: 70,
+              flexibleSpace: MainAppBar(loc: loc, theme: theme),
             ),
-          ),
-        ),
-        Expanded(
-          child: ListView.builder(
-            itemCount: cards.length,
-            itemBuilder: (context, index) {
-              var item = cards[index];
-
-              return Row(
-                children: [
-                  Text(item.name),
-                  const SizedBox(
-                    width: 10,
+            SliverAppBar(
+              pinned: true,
+              collapsedHeight: 102,
+              flexibleSpace: Filter(),
+            ),
+            SliverList(
+              delegate: SliverChildListDelegate(
+                [
+                  SizedBox(
+                    height: 25,
                   ),
-                  Text(item.ccal.toString())
+                  TopRecipes(cards: cards),
+                  SizedBox(
+                    height: 25,
+                  ),
+                  Text("Все рецепты"),
+                  SizedBox(
+                    height: 25,
+                  ),
                 ],
-              );
-            },
-          ),
+              ),
+            ),
+            AllRecipes(cards: cards),
+          ],
         ),
-      ],
+      ),
     );
   }
 }

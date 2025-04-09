@@ -9,6 +9,7 @@ class AppThemes {
       textTheme: TextTheme(
         titleLarge: AppTypography.largeStyle.copyWith(color: AppColors.textLight),
         bodyMedium: AppTypography.mediumStyle.copyWith(color: AppColors.textLight),
+        labelMedium: AppTypography.secondaryMediumStyle.copyWith(color: AppColors.lableLight),
       ),
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
           elevation: 10,
@@ -27,6 +28,7 @@ class AppThemes {
       textTheme: TextTheme(
         titleLarge: AppTypography.largeStyle.copyWith(color: AppColors.textDark),
         bodyMedium: AppTypography.mediumStyle.copyWith(color: AppColors.textDark),
+        labelMedium: AppTypography.secondaryMediumStyle.copyWith(color: AppColors.lableDark),
       ),
     );
     return theme;

@@ -24,7 +24,6 @@ class MainWrapper extends StatefulWidget {
 }
 
 class _MainWrapperState extends State<MainWrapper> {
-  PageController _pageViewController = PageController();
   int _currentIndex = 0;
   List<Widget> _pages;
 
@@ -40,18 +39,10 @@ class _MainWrapperState extends State<MainWrapper> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _pages[_currentIndex],
-      // PageView(
-      //   children: pages,
-      //   controller: _pageViewController,
-      //   onPageChanged: (value) => setState(() {
-      //     _currentIndex = value;
-      //   }),
-      // ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: (value) => setState(() {
           _currentIndex = value;
-          //_pageViewController.animateToPage(value, duration: Duration(milliseconds: 200), curve: Curves.linear);
         }),
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
