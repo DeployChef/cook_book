@@ -1,4 +1,4 @@
-import 'package:cook_book/Ui/components/name_title.dart';
+import 'package:cook_book/ui/home/components/name_title.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

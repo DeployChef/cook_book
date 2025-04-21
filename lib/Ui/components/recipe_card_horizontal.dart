@@ -1,4 +1,4 @@
-import 'package:cook_book/Domain/model/recipe.dart';
+import 'package:cook_book/domain/model/recipe.dart';
 import 'package:flutter/material.dart';
 
 class RecipeCardHorizontal extends StatelessWidget {

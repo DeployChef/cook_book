@@ -1,4 +1,4 @@
-import 'package:cook_book/Ui/styles/app_colors.dart';
+import 'package:cook_book/ui/styles/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class Filter extends StatelessWidget {

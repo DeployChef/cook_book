@@ -1,5 +1,5 @@
-import 'package:cook_book/DataAccess/interfaces/i_recipe_repository.dart';
-import 'package:cook_book/Domain/model/recipe.dart';
+import 'package:cook_book/data_access/interfaces/i_recipe_repository.dart';
+import 'package:cook_book/domain/model/recipe.dart';
 
 class RecipeRepository implements IRecipeRepository {
   @override
